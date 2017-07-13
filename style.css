@@ -1,6 +1,6 @@
 body{
-  background: grey ;
   margin-top: 2em;
+  background: whitesmoke;
 }
 
 p{
@@ -13,15 +13,8 @@ p{
 
 .jumbotron{
   background-color: white;
-  position: relative;
 }
 
 .small{
   color: black;
-}
-
-#botton{
-  position: absolute;
-  width: 100%;
-  height: 100%;
 }

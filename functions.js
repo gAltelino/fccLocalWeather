@@ -5,6 +5,8 @@ $(document).ready(function(){
 
 function getWeather(){ 
 
+    $("#switcher").addClass('disabled');
+
     if("geolocation" in navigator){
 
         navigator.geolocation.getCurrentPosition(function(position){
@@ -27,9 +29,8 @@ function darkSkyApi(latitude, longitude){
                 )
         .done(function(data){
         $("#temperature").html(JSON.stringify(data.currently.temperature));
-
-        console.log(data.currently.icon);
-        //'<div id="icon"></div>'
+        $("#switcher").removeClass('disabled');
+        backGroundColor();
         })                
 }
 
@@ -53,4 +54,15 @@ function temperatureToFahrenheit(){
 var temperature = $("#temperature").text();
     temperature = (temperature * 1.8) + 32;
     $("#temperature").html(temperature.toFixed(0));
+}
+
+function backGroundColor(){
+    var temperature =  $("#temperature").text();
+    if (temperature > 77){
+        $('body').css('background','lightcoral');
+    }if (temperature <= 77 && temperature >= 54) {
+        $('body').css('background','lightblue');
+    } else {
+        $('body').css('background','lightgray');
+    }
 }
